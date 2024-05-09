@@ -395,7 +395,13 @@ function main(){
 
     grid.apply()
 
-    vor.update_seeds({clear:true,width:vor.width,height:vor.height})
+    if(localStorage.getItem("seeds_data")){
+      vor.seeds.load(JSON.parse(localStorage.getItem("seeds_data")),{context:vor})
+      vor.update_seeds({clear:false})
+    } else {
+      vor.update_seeds({clear:true,width:vor.width,height:vor.height})
+    }
+
 
     window.addEventListener("main_window",onMainWindow,false)
 }
